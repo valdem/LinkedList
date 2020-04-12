@@ -198,28 +198,31 @@ void DoubleList::remove(const size_t pos)
     delete getNode(pos);
     getNode(pos+1)->prev = getNode(pos-1);
     getNode(pos-1)->next = getNode(pos+1);
+    this->_size -= 1;
 }
 
 void DoubleList::removeNextNode(Node* node)
 {
     node->removeNext();
-    _size--;
+    this->_size -= 1;
 }
 
 void DoubleList::removePrevNode(Node* node) {
     node->removePrev();
-    _size--;
+    this->_size -= 1;
 }
 
 void DoubleList::removeFront() {
     _head->next->prev = nullptr;
     delete _head;
     _head = _head->next;
+    this->_size -= 1;
 }
 
 void DoubleList::removeBack() {
     delete getNode(_size-1);
     getNode(_size-2)->next = nullptr;
+    this->_size -= 1;
 }
 
 long long int DoubleList::findIndex(const ValueType& value) const
