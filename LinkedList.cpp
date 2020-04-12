@@ -163,21 +163,25 @@ void LinkedList::remove(const size_t pos)
     
     delete getNode(pos);
     getNode(pos-1)->next = getNode(pos+1);
+    this->_size -= 1;
 }
 
 void LinkedList::removeNextNode(Node* node)
 {
     node->removeNext();
+    this->_size -= 1;
 }
 
 void LinkedList::removeFront() {
     delete _head;
-    _head = _head->next;
+    this->_head = _head->next;
+    this->_size -= 1;
 }
 
 void LinkedList::removeBack() {
     delete getNode(_size-1);
     getNode(_size-2)->next = nullptr;
+    this->_size -= 1;
 }
 
 long long int LinkedList::findIndex(const ValueType& value) const
